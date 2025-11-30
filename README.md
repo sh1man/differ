@@ -26,23 +26,7 @@ uv sync --all-extras
 python main.py
 ```
 
-#### С нормализацией чисел через Gemini
-
-Для корректного сравнения чисел (например, "2200000" vs "два миллиона двести тысяч") рекомендуется использовать Gemini API:
-
-1. Получите API ключ: https://aistudio.google.com/apikey
-
-2. Создайте `.env` файл:
-```bash
-GEMINI_API_KEY=your-api-key-here
-```
-
-3. Запустите скрипт:
-```bash
-python main.py
-```
-
-### 2. FastAPI REST API сервер
+### 1. FastAPI REST API сервер
 
 #### Запуск сервера
 
@@ -95,8 +79,6 @@ python app.py
   "hypothesis_normalized": "всем добрый день у нас две тысячи двадцать четыре год"
 }
 ```
-
-**Примечание:** Нормализация чисел через Gemini AI выполняется автоматически при наличии GEMINI_API_KEY.
 
 #### Пример использования с curl
 
@@ -187,35 +169,3 @@ Character Error Rate (CER): 1.23%
   [УДАЛЕНО] 'конференция'
   [ВСТАВЛЕНО] 'а'
 ```
-
-## Конфигурация
-
-Создайте `.env` файл в корне проекта:
-
-```env
-GEMINI_API_KEY=your-api-key-here
-```
-
-Или используйте переменную окружения:
-
-```bash
-export GEMINI_API_KEY='your-api-key-here'
-```
-
-## Архитектура
-
-См. [CLAUDE.md](CLAUDE.md) для подробной информации о структуре проекта.
-
-## Зависимости
-
-- `jiwer` - расчет ASR метрик (WER, CER)
-- `google-generativeai` - Gemini API для нормализации чисел
-- `fastapi` - REST API сервер
-- `uvicorn` - ASGI сервер
-- `pydantic` - валидация данных
-- `python-dotenv` - работа с .env файлами
-
-### Dev зависимости
-
-- `pytest` - фреймворк для тестирования
-- `httpx` - HTTP клиент для тестирования FastAPI
